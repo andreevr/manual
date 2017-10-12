@@ -758,11 +758,11 @@ void loop()
 </li>
 <li>
 <p>Теперь нажми и удерживай кнопку. Если ты все делал по указаниям, то при нажатии на кнопку светодиод должен загораться, а при отпускании кнопки - гаснуть.</p>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p>Когда ты нажимаешь на кнопку, ты замыкаешь цепь и электрический ток поступает на пин D12, в дальнейшем наша программа обрабатывает этот сигнал и подает высокий уровень напряжения на пин D13, к которому подключен светодиод.</p>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Давай рассмотрим нашу программу подробнее.</p>
@@ -776,7 +776,7 @@ void loop()
 </div>
 </div>
 <div class="paragraph">
-<p>Данной строчкой мы создаем переменную с именем <strong>buttonPin</strong>, типа <strong>int</strong> (integer - целый тип данных) и присваиваем ей значение <strong>12</strong>.
+<p>Данной строчкой мы создаем глобальную переменную с именем <strong>buttonPin</strong>, типа <strong>int</strong> (integer - целый тип данных) и присваиваем ей значение <strong>12</strong>.
 Имя переменной может быть любым, но понятным для тебя. Значение должно соответствовать пину, который ты выбрал, а тип переменной мы выбрали целый по причине того, что пины на плате обозначаются целыми числами (12, 13, 14 и тп.), а не дробными (0,5, 0,8 и тп.).</p>
 </div>
 <div class="admonitionblock tip">
@@ -791,6 +791,18 @@ void loop()
 </tr>
 </table>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<strong>Глобальные переменные</strong> - это переменные, которые доступны всей программе, включая подпрограммы (пользовательские функции). <strong>Локальные переменные</strong> - переменные, определенные внутри подпрограммы (пользовательской функции). Они доступны только внутри функции, в которой они определены.
+</td>
+</tr>
+</table>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>boolean buttonState = LOW;    // Состояние кнопки отжата</pre>
@@ -798,10 +810,62 @@ void loop()
 </div>
 <div class="paragraph">
 <p>Переменная <strong>buttonState</strong> необходима нам для того, чтобы отследить состояние нашей кнопки. У нее может быть 2 состояния: нажата и отжата.
-Поэтому мы создаем переменную типа <strong>boolean</strong> и начальным значением <strong>LOW</strong> (в ходе программы это значение будет изменяться).</p>
+Поэтому мы создаем переменную типа <strong>boolean</strong> c начальным значением <strong>LOW</strong> (в ходе программы это значение будет изменяться).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>boolean</strong> - тип данных, принимающий всего два возможных значения (true (истина) или false (ложь); 1 или 0; LOW (низкий уровень напряжения) или HIGH (высокий уровень напряжения))</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>pinMode(buttonPin, INPUT); // Задаем пин с кнопкой как вход</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>pinMode()</strong> - это процедура, которая устанавливает определенный пин в соответствующий режим;</p>
+</li>
+<li>
+<p><strong>buttonPin</strong> - имя пина, к которому подключен светодиод. В <a href="#_Урок_1_Знакомство_со_светодиодом">уроке 1</a> мы не задавали имя пину, а писали просто номер пина. Правильнее задавать имя для всех переменных;</p>
+</li>
+<li>
+<p><strong>INPUT</strong> - режим, в который мы устанавливаем наш пин. В нашем случае пин определен как <strong>вход</strong>. Это значит что информационный сигнал будет передаваться из вне на этот пин;</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>buttonState = digitalRead(buttonPin);</pre>
+</div>
 </div>
 <div class="paragraph">
-<p><strong>boolean</strong> - тип данных, принимающий всего два возможных значения (true (истина) или false (ложь); 1 или 0; LOW (низкий уровень напряжения) или HIGH (высокий уровень напряжения))</p>
+<p>С помощью функции <strong>digitalRead()</strong>, программа считывает значение с переменной <strong>buttonPin</strong> и присваивает его нашей переменной <strong>buttonState</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>digitalRead()</strong> - функция, считывающая значение с указанного пина. Возвращает либо LOW, либо HIGH;</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>if (buttonState == HIGH)       // Если кнопка нажата
+{
+  digitalWrite(ledPin, HIGH);  // Включаем светодиод
+}
+else                           // Иначе
+{
+  digitalWrite(ledPin, LOW);   // Выключаем светодиод
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>В данном месте программы мы выполняем состояние кнопки: нажата или нет. Используя при этом конструкцию <strong>if, else</strong></p>
 </div>
 </div>
 </div>
@@ -809,7 +873,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-12 12:07:20 UTC
+Last updated 2017-10-12 13:27:35 UTC
 </div>
 </div>
 </body>
