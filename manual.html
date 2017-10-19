@@ -427,6 +427,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_Подготовка">Подготовка</a></li>
 <li><a href="#_Урок_1_Знакомство_со_светодиодом">Урок 1. Знакомство со светодиодом</a>
 <ul class="sectlevel2">
+<li><a href="#_Расчет_номинала_резистора">Расчет номинала резистора</a></li>
 <li><a href="#_Ход_работы">Ход работы</a></li>
 <li><a href="#_Задания">Задания</a></li>
 </ul>
@@ -450,6 +451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/mrp309.jpg" alt="500" width="500">
 </div>
+<div class="title">Figure 1. Мобильный робот МРП309</div>
 </div>
 <div class="paragraph">
 <p>Для программирования мобильного робота тебе понадобится среда разработки Arduino IDE, которую можно скачать здесь <a href="https://www.arduino.cc/en/main/software#" class="bare">https://www.arduino.cc/en/main/software#</a></p>
@@ -490,6 +492,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/ArduinoIDE.png" alt="500" width="500">
 </div>
+<div class="title">Figure 2. Рабочее окно Arduino IDE</div>
 </div>
 </div>
 </div>
@@ -515,6 +518,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/1.1.jpg" alt="300" width="300">
 </div>
+<div class="title">Figure 3. Внешний вид светодиода</div>
+</div>
+<div class="paragraph">
+<p>У светодиода есть два контакта: отрицательный - <strong>катод</strong> и положительный - <strong>анод</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/1.2.1.luminodeode.jpg" alt="300" width="300">
+</div>
+<div class="title">Figure 4. Обозначение светодиода на схеме</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -523,11 +536,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Warning</div>
 </td>
 <td class="content">
-Чтобы светодиод не сгорел, он включается в схему через резистор. Резистор подключается к положительному контакту светодиода.
+Чтобы светодиод не сгорел, он включается в схему через резистор. Резистор подключается к положительному (аноду) контакту светодиода.
 Важно подобрать правильный номинал резистора.
 </td>
 </tr>
 </table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/1.2.2.luminodeode.jpg" alt="300" width="300">
+</div>
+<div class="title">Figure 5. Схема включения светодиода через резистор</div>
+</div>
+<div class="sect2">
+<h3 id="_Расчет_номинала_резистора">Расчет номинала резистора</h3>
+<div class="paragraph">
+<p>Чтобы светодиод работал исправно, а не сгорел при первом подключении его к питанию,
+ необходимо правильно подобрать номинал резистора. Резистор будет забирать излишнее напряжение.</p>
+</div>
+<div class="paragraph">
+<p>Расчет номинала резистора выполняется по формуле, взятой из закона Ома.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_Ход_работы">Ход работы</h3>
@@ -540,7 +569,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Подключи светодиод. На кросс-плате их два (синий и красный), находятся в передней части кросс-платы. Выбери любой. Плюс светодиода подсоедини к пину D13 платы Arduino Nano, Минус светодиода подсоедини к любому  минусу контактной колодки (Схема 1). Как правило, контакт «плюс» соединяют красным проводом, «минус» – черным.;</p>
 <div class="imageblock">
 <div class="content">
-<img src="pictures/1.2.luminodeode.jpg" alt="700" width="700">
+<img src="pictures/1.2.3.luminodeode.jpg" alt="700" width="700">
 </div>
 </div>
 </li>
@@ -873,7 +902,7 @@ else                           // Иначе
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-12 13:27:35 UTC
+Last updated 2017-10-19 19:41:39 UTC
 </div>
 </div>
 </body>
