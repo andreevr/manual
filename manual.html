@@ -417,6 +417,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body class="article">
 <div id="header">
@@ -434,6 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_Урок_2_Знакомство_с_кнопкой">Урок 2. Знакомство с кнопкой</a>
 <ul class="sectlevel2">
+<li><a href="#_Стягивающий_резистор">Стягивающий  резистор</a></li>
+<li><a href="#_Оператор_if_else">Оператор if&#8230;&#8203;else</a></li>
 <li><a href="#_Ход_работы_2">Ход работы</a></li>
 </ul>
 </li>
@@ -447,7 +450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Текущие задания выполняются на мобильном роботе МРП309, но можно использовать и другие устройства семейства Arduino.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="pictures/mrp309.jpg" alt="500" width="500">
 </div>
@@ -463,7 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <table>
 <tr>
 <td class="icon">
-<div class="title">Warning</div>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 Перед использованием Arduino IDE необходимо выполнить выбор порта загрузки, платы и микроконтроллера,
@@ -506,7 +509,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 Светодиод — это полупроводниковый прибор, трансформирующий электроток в видимое свечение.
@@ -533,7 +536,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <table>
 <tr>
 <td class="icon">
-<div class="title">Warning</div>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 Чтобы светодиод не сгорел, он включается в схему через резистор. Резистор подключается к положительному (аноду) контакту светодиода.
@@ -646,7 +649,7 @@ void loop()
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 В любом скетче Arduino IDE должны присутствовать две функции <strong>setup()</strong> и <strong>loop()</strong>, иначе при проверке кода вылезет ошибка.
@@ -768,7 +771,7 @@ void loop()
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 Кнопка - это простой механизм, замыкающий цепь. Пока кнопка нажата - цепь замкнута, кнопка опущена - цепь разомкнута.
@@ -788,6 +791,95 @@ void loop()
 </div>
 <div class="title">Figure 8. Обозначение кнопки на схеме (слева с одной парой контактов, справа с двумя парами контактов)</div>
 </div>
+<div class="paragraph">
+<p>Рассмотрим схему, представленную ниже:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/2.2.2.button.jpg" alt="300" width="300">
+</div>
+<div class="title">Figure 9. Схема подключения кнопки через стягивающий резистор</div>
+</div>
+<div class="paragraph">
+<p>В этой схеме сигнал идет с источника питания через кнопку и попадает в плату Arduino Nano черезе пин D12,
+в дальнейшем микроконтроллер обрабатывает этот сигнал и посылает сигнал на пин D13,
+к которому подключен светодиод. Резистор в схеме играет роль <strong>стягивающего</strong>, который забирает излишки тока в землю.
+На нашей кросс-плате к кнопке уже подключен данный резистор. Его номинал составляет 10 кОм.</p>
+</div>
+<div class="paragraph">
+<p>Реализуем данную схему в ходе работы.</p>
+</div>
+<div class="sect2">
+<h3 id="_Стягивающий_резистор">Стягивающий  резистор</h3>
+<div class="paragraph">
+<p>Используются в схемах, рядом с контактами логических компонентов, где важно только 2 факта:
+есть на контакте питание или нет. Например контакты Arduino.
+Задача этих резисторов - не оставить контакт компонента в "подвешенном" состоянии.</p>
+</div>
+<div class="paragraph">
+<p>Рассмотрим схему без стягивающего резистора</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/2.2.3.buttonNotRezistor.jpg" alt="300" width="300">
+</div>
+<div class="title">Figure 10. Схема подключения светодиода через кнопку</div>
+</div>
+<div class="paragraph">
+<p>Мы хотим, чтобы когда кнопка была не нажата, светодиод не горел (цифровой вход фиксировал отсутствие сигнала).
+Но в данном случае наш вход то срабатывает, то не срабатывает в хаотическом состоянии (Светодиод может тускло гореть).
+Причина этого — шумы. Которые возникают из различных воздействий окружающей среды. Провода действуют как антенны и производят электричество из электромагнитных волн среды.
+Чтобы гарантировать отсутствие напряжения при разомкнутой цепи, рядом со светодиодом (либо любым другим цифровым входом платы) ставится стягивающий резистор:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/2.2.4.buttonRezistor.jpg" alt="300" width="300">
+</div>
+<div class="title">Figure 11. Схема подключения светодиода через кнопку с использованием стягивающего резистора</div>
+</div>
+<div class="paragraph">
+<p>Теперь нам не будут мешать шумы. При нажатии на кнопку светодиод будет гореть, а при не нажатии гарантированно погаснет.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Как правило сопротивление стягивающего резистора не менее 10 кОм.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_Оператор_if_else">Оператор if&#8230;&#8203;else</h3>
+<div class="paragraph">
+<p>Конструкция <strong>if&#8230;&#8203;else</strong> позволяет выполнять проверку условия
+и задавать варианты дальнейшего ее решения.</p>
+</div>
+<div class="paragraph">
+<p>Синтаксис этой конструкции таков:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>if (условие)       // Проверяется указанное условие
+{
+  // Действие A
+}
+else                           // Иначе
+{
+  // Действие B</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Если <strong>условие</strong> будет верным, то программы перейдет к <strong>Действию A</strong>, а <strong>Действие B</strong> проигнорирует.</p>
+</div>
+<div class="paragraph">
+<p>Если условие - <strong>неверное</strong>, то программа будет выполнять <strong>Действие B</strong>, а <strong>Действие A</strong> - игнорировать.</p>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_Ход_работы_2">Ход работы</h3>
 <div class="olist arabic">
@@ -801,10 +893,7 @@ void loop()
 <div class="content">
 <img src="pictures/2.3.buttonLuminodeode.jpg" alt="700" width="700">
 </div>
-<div class="title">Figure 9. Схема подключения кнопки и светодиода к плате</div>
-</div>
-<div class="paragraph">
-<p>Данное соединение аналогично схеме, изображенной ниже</p>
+<div class="title">Figure 12. Схема подключения кнопки и светодиода к плате</div>
 </div>
 </li>
 <li>
@@ -866,7 +955,7 @@ void loop()
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 В программе каждая переменная имеет имя, тип данных и значение.
@@ -878,7 +967,7 @@ void loop()
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <strong>Глобальные переменные</strong> - это переменные, которые доступны всей программе, включая подпрограммы (пользовательские функции). <strong>Локальные переменные</strong> - переменные, определенные внутри подпрограммы (пользовательской функции). Они доступны только внутри функции, в которой они определены.
@@ -948,7 +1037,7 @@ else                           // Иначе
 </div>
 </div>
 <div class="paragraph">
-<p>В данном месте программы мы выполняем состояние кнопки: нажата или нет. Используя при этом конструкцию <strong>if, else</strong></p>
+<p>В данном месте программы мы проверяем состояние кнопки: нажата или нет. Используем при этом конструкцию <strong>if, else</strong></p>
 </div>
 </div>
 </div>
@@ -956,7 +1045,7 @@ else                           // Иначе
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-21 09:12:18 UTC
+Last updated 2017-10-23 14:17:40 UTC
 </div>
 </div>
 </body>
