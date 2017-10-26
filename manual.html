@@ -419,10 +419,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Познаём робота вместе</h1>
-<div id="toc" class="toc">
+<div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_Подготовка">Подготовка</a></li>
@@ -441,6 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_Задания_2">Задания</a></li>
 </ul>
 </li>
+<li><a href="#_Урок_3_Знакомство_с_пищалкой_пьезоэлемент">Урок 3. Знакомство с пищалкой (пьезоэлемент)</a></li>
 </ul>
 </div>
 </div>
@@ -461,6 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/IMG_7309.JPG" alt="500" width="500">
 </div>
+<div class="title">Figure 2. Прототипы мобильного робота</div>
 </div>
 <div class="paragraph">
 <p>Для программирования мобильного робота тебе понадобится среда разработки Arduino IDE, которую можно скачать здесь <a href="https://www.arduino.cc/en/main/software#" class="bare">https://www.arduino.cc/en/main/software#</a></p>
@@ -501,7 +503,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/ArduinoIDE.png" alt="500" width="500">
 </div>
-<div class="title">Figure 2. Рабочее окно Arduino IDE</div>
+<div class="title">Figure 3. Рабочее окно Arduino IDE</div>
 </div>
 </div>
 </div>
@@ -527,7 +529,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/1.1.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 3. Внешний вид светодиода</div>
+<div class="title">Figure 4. Внешний вид светодиода</div>
 </div>
 <div class="paragraph">
 <p>У светодиода есть два контакта: отрицательный - <strong>катод</strong> и положительный - <strong>анод</strong>.</p>
@@ -536,7 +538,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/1.2.1.luminodeode.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 4. Обозначение светодиода на схеме</div>
+<div class="title">Figure 5. Обозначение светодиода на схеме</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -555,7 +557,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/1.2.2.luminodeode.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 5. Схема включения светодиода через резистор</div>
+<div class="title">Figure 6. Схема включения светодиода через резистор</div>
 </div>
 <div class="sect2">
 <h3 id="_Расчет_номинала_резистора">Расчет номинала резистора</h3>
@@ -618,7 +620,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="pictures/1.2.3.luminodeode.jpg" alt="700" width="700">
 </div>
-<div class="title">Figure 6. Схема подключения светодиода к плате</div>
+<div class="title">Figure 7. Схема подключения светодиода к плате</div>
 </div>
 </li>
 <li>
@@ -789,13 +791,13 @@ void loop()
 <div class="content">
 <img src="pictures/2.1.button.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 7. Внешний вид тактовой кнопки</div>
+<div class="title">Figure 8. Внешний вид тактовой кнопки</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="pictures/2.2.1.button.jpg" alt="350" width="350">
 </div>
-<div class="title">Figure 8. Обозначение кнопки на схеме (слева с одной парой контактов, справа с двумя парами контактов)</div>
+<div class="title">Figure 9. Обозначение кнопки на схеме (слева с одной парой контактов, справа с двумя парами контактов)</div>
 </div>
 <div class="paragraph">
 <p>Рассмотрим схему, представленную ниже:</p>
@@ -804,7 +806,7 @@ void loop()
 <div class="content">
 <img src="pictures/2.2.2.button.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 9. Схема подключения кнопки через стягивающий резистор</div>
+<div class="title">Figure 10. Схема подключения кнопки через стягивающий резистор</div>
 </div>
 <div class="paragraph">
 <p>В этой схеме сигнал идет с источника питания через кнопку и попадает в плату Arduino Nano черезе пин D12,
@@ -829,7 +831,7 @@ void loop()
 <div class="content">
 <img src="pictures/2.2.3.buttonNotRezistor.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 10. Схема подключения светодиода через кнопку</div>
+<div class="title">Figure 11. Схема подключения светодиода через кнопку</div>
 </div>
 <div class="paragraph">
 <p>Мы хотим, чтобы когда кнопка была не нажата, светодиод не горел (цифровой вход фиксировал отсутствие сигнала).
@@ -841,7 +843,7 @@ void loop()
 <div class="content">
 <img src="pictures/2.2.4.buttonRezistor.jpg" alt="300" width="300">
 </div>
-<div class="title">Figure 11. Схема подключения светодиода через кнопку с использованием стягивающего резистора</div>
+<div class="title">Figure 12. Схема подключения светодиода через кнопку с использованием стягивающего резистора</div>
 </div>
 <div class="paragraph">
 <p>Теперь нам не будут мешать шумы. При нажатии на кнопку светодиод будет гореть, а при не нажатии гарантированно погаснет.</p>
@@ -899,7 +901,7 @@ else                           // Иначе
 <div class="content">
 <img src="pictures/2.3.buttonLuminodeode.jpg" alt="700" width="700">
 </div>
-<div class="title">Figure 12. Схема подключения кнопки и светодиода к плате</div>
+<div class="title">Figure 13. Схема подключения кнопки и светодиода к плате</div>
 </div>
 </li>
 <li>
@@ -1059,12 +1061,14 @@ else                           // Иначе
 </li>
 <li>
 <p>Поправь программу так, чтобы при опущенной кнопке светодиод горел, а при нажатой мигал с периодичностью в 1 секунду.
-(Смотри <a href="#_Урок_1_Знакомство_со_светодиодом">урок 1</a>)</p>
+(Смотри <a href="#_Урок_1_Знакомство_со_светодиодом">урок 1</a>).</p>
 </li>
 <li>
 <p>Поправь программу так, чтобы при нажатии на кнопку светодиод мигал, а при
-отпущенной кнопке нет!
-Сложное. Подсоедини в схему вместо светодиода пищалку (пьезоэлемент).
+отпущенной кнопке нет.</p>
+</li>
+<li>
+<p>Подсоедини в схему вместо светодиода пищалку (пьезоэлемент).
 Что произошло?</p>
 </li>
 </ol>
@@ -1072,10 +1076,16 @@ else                           // Иначе
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_Урок_3_Знакомство_с_пищалкой_пьезоэлемент">Урок 3. Знакомство с пищалкой (пьезоэлемент)</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-23 15:08:45 UTC
+Last updated 2017-10-26 20:40:06 UTC
 </div>
 </div>
 </body>
