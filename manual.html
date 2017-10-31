@@ -1200,6 +1200,45 @@ void loop()
 }</pre>
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Описание функций программного кода:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Про функции <strong>setup()</strong> и <strong>loop()</strong> ты знаешь из <a href="#_Урок_1_Знакомство_со_светодиодом">урока 1</a>;</p>
+</li>
+<li>
+<p>Оператор <strong>if</strong> тебе известен из <a href="#_Урок_2_Знакомство_с_кнопкой">урока 2</a>;</p>
+</li>
+<li>
+<p><strong>Serial</strong> -это встроенный объект, экземпляр класса. Предназначен для работы с последовательным портом, который содержит методы
+<strong>write</strong>, <strong>read</strong>, <strong>begin</strong>, <strong>println</strong> и др;</p>
+</li>
+<li>
+<p><strong>begin()</strong> - это метод, который открывает порт для передачи данных. В этот метод передается скорость передачи, на которой будет происходить общение, в бодах (бит/секунду).
+В нашем коде скорость передачи равна 9600 бод.</p>
+</li>
+<li>
+<p><strong>available()</strong> -  метод, возвращающий целое число байт, которое микроконтроллер еще не прочитал;
+Если это значение равно нулю, то это значит, что никаких данных через последовательный порт не приходило;</p>
+</li>
+<li>
+<p><strong>read()</strong> - метод, который считывает пришедшую информацию с компьютера (пришедший байт);</p>
+</li>
+<li>
+<p><strong>print()</strong> - метод, позволяющий печатать через последовательный порт текстовую информацию, переданную в качестве аргумента.
+Также есть функция <strong>println()</strong>, которая добавляет после нашего текста символ переноса на новую строчку.
+Таким образом каждая новая информация в мониторе порта будет располагаться с новой строчки (столбиком), а у метода <strong>print()</strong> вся информация будет располагаться в строчку.</p>
+</li>
+<li>
+<p><strong>write()</strong> - метод, передает информационный байт в монитор порта. То есть  <strong>print()</strong> печатает строчку значения аргумента, а <strong>write()</strong> передает значение этого аргумента.</p>
+</li>
+<li>
+<p><strong>byte b</strong> - переменная с именем b и типом данных <strong>byte</strong>. Byte - тип данных данных, содержащий 8-ми битное беззнаковое целое число, в диапазоне 0..255.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Открой Arduino IDE и зайди в:</p>
@@ -1240,26 +1279,10 @@ void loop()
 передался на контроллер, контроллер его обработал и отправил в монитор порта абсолютно такой же текст.
 Таким вот простым образом можно производить передачу данных с компьютера на контроллер и наоборот.</p>
 </div>
-<div class="paragraph">
-<p><strong>Рассмотрим код программы подробнее:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Про функции <strong>setup()</strong> и <strong>loop()</strong> ты знаешь из <a href="#_Урок_1_Знакомство_со_светодиодом">урока 1</a>;</p>
-</li>
-<li>
-<p>Оператор <strong>if</strong> тебе известен из <a href="#_Урок_2_Знакомство_с_кнопкой">урока 2</a>;</p>
-</li>
-<li>
-<p><strong>Serial.begin(9600)</strong> -</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>Теперь создадим диалог между тобой и контроллером робота.
-Смысл диалога состоит в том, что ты будешь писать роботу вопросы, а он будет тебе отвечать.</p>
+Смысл диалога состоит в том, что ты будешь писать роботу вопросы, а он будет тебе на них отвечать.</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1273,6 +1296,94 @@ void loop()
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Вопросы можешь придумать свои, а можешь использовать те, что мы приготовили:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ты:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Привет!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Контроллер:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Привет!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ты:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Как тебя зовут?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Контроллер:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Меня зовут Робас.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ты:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Сколько тебе лет?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Контроллер:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 года.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ты:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Расскажи законы робототехники</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Контроллер:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Существует три основных закона робототехники. Их автор Айзек Азимов.
+</p><p class="tableblock">              1.Робот не может причинить вред человеку или своим бездействием допустить, чтобы человеку был причинён вред.
+</p><p class="tableblock">              2.Робот должен повиноваться всем приказам, которые даёт человек, кроме тех случаев, когда эти приказы противоречат Первому Закону.
+</p><p class="tableblock">              3.Робот должен заботиться о своей безопасности в той мере, в которой это не противоречит Первому или Второму Законам.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="literalblock">
+<div class="content">
+<pre>// Диалог через последовательный порт
+
+void setup()
+{
+  // Определяем последовательный порт
+  // Задаем скорость передачи данных 9600 бод
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  // Проверка, пришла ли какая-нибудь
+  // информация с компьютера
+  if (Serial.available() &gt; 0)
+  {
+    // Пришла. Считываем ее в переменную b
+    byte b = Serial.read();
+    if (b == "Привет!")
+    {
+        Serial.println("Привет");
+    }
+    if (b == "Как тебя зовут?")
+    {
+        Serial.println("Меня зовут Робас");
+    }
+    if (b == "Сколько тебе лет?")
+    {
+        Serial.println("3 года");
+    }
+    if (b == "Расскажи законы робототехники")
+    {
+        Serial.println("Существует три основных закона робототехники. Их автор Айзек Азимов.");
+        Serial.println("1.Робот не может причинить вред человеку или своим бездействием допустить, чтобы человеку был причинён вред.");
+        Serial.println("2.Робот должен повиноваться всем приказам, которые даёт человек, кроме тех случаев, когда эти приказы противоречат Первому Закону.");
+        Serial.println("3.Робот должен заботиться о своей безопасности в той мере, в которой это не противоречит Первому или Второму Законам.");
+    }
+  }
+}</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
@@ -1282,7 +1393,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-30 20:09:37 UTC
+Last updated 2017-10-31 16:27:52 UTC
 </div>
 </div>
 </body>
