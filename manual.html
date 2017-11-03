@@ -1407,6 +1407,41 @@ void loop()
 Плюс пьезопищалки подключим к пину <strong>D13</strong>.
 Минусы элементов подключим к дополнительной минусовой колодке.</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>// Управление датчиками с помощью последовательного порта
+
+int blueLed = 2;
+int redLed = 3;
+int piezo = 13;
+
+void setup()
+{
+  // Определяем последовательный порт
+  // Задаем скорость передачи данных 9600 бод
+  Serial.begin(9600);
+
+  pinMode(blueLed, OUTPUT);      // Задаем пин как выход
+  pinMode(redLed, OUTPUT);      // Задаем пин как выход
+  pinMode(piezo, OUTPUT);      // Задаем пин как выход
+}
+
+void loop()
+{
+  // Проверка, пришла ли какая-нибудь
+  // информация с компьютера
+  if (Serial.available() &gt; 0)
+  {
+    // Пришла. Считываем ее в переменную b
+    byte b = Serial.read();
+    if (b == 'red on')
+    {
+        digitalWrite(redLed, HIGH);
+    }
+  }
+}</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
@@ -1416,7 +1451,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 18:08:00 UTC
+Last updated 2017-11-03 08:54:37 UTC
 </div>
 </div>
 </body>
