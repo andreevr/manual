@@ -1407,23 +1407,27 @@ void loop()
 Плюс пьезопищалки подключим к пину <strong>D13</strong>.
 Минусы элементов подключим к дополнительной минусовой колодке.</p>
 </div>
+<div class="paragraph">
+<p>Загрузи код:</p>
+</div>
 <div class="literalblock">
 <div class="content">
-<pre>// Управление датчиками с помощью последовательного порта
+<pre>// Управление через последовательный порт
 
-int blueLed = 2;
-int redLed = 3;
-int piezo = 13;
+int blueLed = 2;                   // Пин с синим светодиодом
+int redLed = 3;                    // Пин с красным светодиодом
+int piezo = 13;                    // Пин с пищалкой
 
 void setup()
 {
   // Определяем последовательный порт
   // Задаем скорость передачи данных 9600 бод
   Serial.begin(9600);
+  Serial.println("Press comand..."); // Выводим фразу "Введите команду" при открытии монитор порта
 
-  pinMode(blueLed, OUTPUT);      // Задаем пин как выход
-  pinMode(redLed, OUTPUT);      // Задаем пин как выход
-  pinMode(piezo, OUTPUT);      // Задаем пин как выход
+  pinMode(blueLed, OUTPUT);        // Задаем пин как выход
+  pinMode(redLed, OUTPUT);         // Задаем пин как выход
+  pinMode(piezo, OUTPUT);          // Задаем пин как выход
 }
 
 void loop()
@@ -1433,10 +1437,28 @@ void loop()
   if (Serial.available() &gt; 0)
   {
     // Пришла. Считываем ее в переменную b
-    byte b = Serial.read();
-    if (b == 'red on')
+    char b = Serial.read();         // Если пришел символ 'r'
+    if (b == 'r')
     {
-        digitalWrite(redLed, HIGH);
+        digitalWrite(redLed, HIGH); // Включаем красный светодиод
+        Serial.println("Red on");   // Выводим текст в монитор порта. "Красный включен"
+    }
+     if (b == 'b')                  // Если пришел символ 'b'
+    {
+        digitalWrite(blueLed, HIGH);// Включаем синий светодиод
+        Serial.println("Blue on");  // Выводим текст в монитор порта. "Синий включен"
+    }
+    if (b == 'p')                   // Если пришел символ 'p'
+    {
+        digitalWrite(piezo, HIGH);  // Включаем пищалку
+        Serial.println("Piezo on"); // Выводим текст в монитор порта. "Пищалка включена"
+    }
+    if (b == '0')                   // Если пришел символ '0'
+    {
+        digitalWrite(blueLed, LOW); // Выключаем синий светодиод
+        digitalWrite(redLed, LOW);  // Выключаем красный светодиод
+        digitalWrite(piezo, LOW);   // Выключаем пищалку
+        Serial.println("All off");  // Выводим текст в монитор порта: "Все выключено"
     }
   }
 }</pre>
@@ -1451,7 +1473,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-03 08:54:37 UTC
+Last updated 2017-11-03 10:02:59 UTC
 </div>
 </div>
 </body>
