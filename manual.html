@@ -445,8 +445,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_Урок_4_Передача_информации_с_мобильного_робота_на_компьютер_через_последовательный_порт">Урок 4. Передача информации с мобильного робота на компьютер через последовательный порт</a>
 <ul class="sectlevel2">
 <li><a href="#_Ход_работы_3">Ход работы</a></li>
+<li><a href="#_Задания_3">Задания</a></li>
 </ul>
 </li>
+<li><a href="#_Урок_5">Урок 5.</a></li>
 </ul>
 </div>
 </div>
@@ -733,10 +735,15 @@ void loop()
 <li>
 <p><strong>delay()</strong> - функция, останавливающая выполнение программы на заданное количество миллисекунд (1000 мс = 1 с).</p>
 </li>
-</ul>
-</div>
+<li>
+<p><strong>// Включаем светодиод</strong> - это комментарий к программе. После двух символов <strong>//</strong>
+можешь писать все, что тебе захочется, сам микроконтроллер это никак не будет учитывать.
+Обычно их пишут, чтобы помнить о том, какое действие выполняет данный кусок кода.</p>
 <div class="paragraph">
 <p>Молодец, а теперь попробуй выполнить задания.</p>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1464,16 +1471,77 @@ void loop()
 }</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Программа работает так, что при нажатии на определенные символы на клавиатуре,
+ты можешь управлять статусом светодиодов и пищалки. Таблица символов представлена ниже.
+Можешь выбрать и свои символы, не забудь только поправить код.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Символ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Действие</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'r'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red on - включение красного светодиода</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'b'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue on - включение синего светодиода</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'p'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piezo on - включение пищалки</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'0'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All off - выключить все</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Молодец, ты узнал что такое последовательный порт и научился, с его помощью, управлять контроллером.
+А теперь попробуй выполнить задания.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_Задания_3">Задания</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Поменяй символы управления светодиодами и пищалкой по своему усмотрению.</p>
+</li>
+<li>
+<p>Поправь последнюю программу так, чтобы при отправки одного символа с клавиатуры оба светодиода и пищалка
+включались одновременно, а при другом символе все отключалось.</p>
+</li>
+<li>
+<p>Поправь программу так, чтобы каждый светодиод и пищалка отключались
+при нажатии на разные кнопки, а не одновременно.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_Урок_5">Урок 5.</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-03 10:02:59 UTC
+Last updated 2017-11-03 11:55:18 UTC
 </div>
 </div>
 </body>
