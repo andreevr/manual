@@ -450,6 +450,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_Урок_5_Ультразвуковой_дальномер">Урок 5. Ультразвуковой дальномер</a>
 <ul class="sectlevel2">
+<li><a href="#_Принцип_работы">Принцип работы</a></li>
+<li><a href="#_Характеристики_УЗ_дальномера_hc_sr04">Характеристики УЗ дальномера HC-SR04</a></li>
 <li><a href="#_Ход_работы_4">Ход работы</a></li>
 </ul>
 </li>
@@ -1539,6 +1541,65 @@ void loop()
 <div class="sect1">
 <h2 id="_Урок_5_Ультразвуковой_дальномер">Урок 5. Ультразвуковой дальномер</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>В данном уроке ты узнаешь что такое ультразвуковой дальномер, как он устроен и,
+с его помощью, сможешь определять расстояния до объекта.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ультразвуковой дальномер - это устройство для измерения расстояния
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_Принцип_работы">Принцип работы</h3>
+<div class="paragraph">
+<p>Ультразвуковой дальномер посылает импульсный сигнал определенной частоты (в нашем случае 40 кГц)
+и слушает эхо. Отправленный сигнал встречается с объектом, отражается от него и попадает обратно в дальномер.
+По времени распространения звуковой волны можно оценить расстояние до объекта.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_Характеристики_УЗ_дальномера_hc_sr04">Характеристики УЗ дальномера HC-SR04</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Напряжение питания</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 В</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Потребляемый ток при работе</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 мА</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Рабочая частота сигнала</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40 кГц</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Рабочий диапазон</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 - 400 см</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Угол измерения</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15°</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Габариты</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">45х20х15 мм</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_Ход_работы_4">Ход работы</h3>
 <div class="olist arabic">
@@ -1547,12 +1608,77 @@ void loop()
 <p>Установи контроллер и ультразвуковой дальномер на кросс-плату.</p>
 </li>
 <li>
-<p>Подключи ультразвуковой дальномер к контроллеру по рисунку.</p>
+<p>Подключи ультразвуковой дальномер к контроллеру по рисунку.
+Поскольку "плюс" (<strong>Vcc</strong>) и "минус" (<strong>Gnd</strong>) уже разведены в дорожках кросс-платы, тебе остается
+подключить 2 контакта: Цифровой выход <strong>Echo</strong> подключи к пину <strong>A1</strong> контроллера, а цифровой вход <strong>Trig</strong> - к пину <strong>A0</strong>.</p>
 <div class="imageblock">
 <div class="content">
-<img src="pictures/5.1.URFinger.jpg" alt="700" width="700">
+<img src="pictures/5.3.URFinger.jpg" alt="700" width="700">
 </div>
 <div class="title">Figure 19. Схема подключения УЗ дальномера</div>
+</div>
+</li>
+<li>
+<p>Подключи устройство к компьютеру через последовательный порт и загрузи на него код. Поскольку общение будет происходить через порт, важно не отсоединять провод от платы.
+Данный код позволит контроллеру определять расстояние между дальномером и объектом:</p>
+<div class="literalblock">
+<div class="content">
+<pre>// Ультразвуковой дальномер и расстояние до препятствия через последовательный порт
+
+int echoPin = A1;                    // Назначаем пин A1. Сигнал с выхода дальномера
+int trigPin = A0;                    // Назначаем пин A0. Сигнал с входа дальномера
+
+void setup()
+{
+  // Определяем СОМ-порт
+  // Задаем ему скорость 9600 бод
+  Serial.begin(9600);
+  pinMode(echoPin, INPUT);           // Задаем пин как вход
+  pinMode(trigPin, OUTPUT);          // Задаем пин как выход
+}
+
+void loop()
+{
+  int duration;                      // Время прохождения сигнала до препятствия
+  int cm;                            // Дальность до препятствия в см
+
+  digitalWrite(trigPin, HIGH);       // Подаем сигнал на дальномер
+  delayMicroseconds(10);             // Удерживаем 10 микросекунд
+  digitalWrite(trigPin, LOW);        // Отмена подачи сигнала на дальномер
+  duration = pulseIn(echoPin, HIGH); // Замеряем длину импульса
+  cm = duration / 58;                // Переводим дальность в сантиметры
+
+  Serial.print(cm);                  // Отправляем на компьютер значение
+  Serial.println(" cm");             // Печатаем единицы измерения в см
+  delay(100);
+}</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Открой Arduino IDE и зайди в:</p>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Сервис &#8658; Монитор порта</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Контроллер через последовательный порт будет выдавать тебе расстояние до объекта в сантиметрах.
+В моем случае расстояние до объекта равнялось 7 см.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/5.4.2.URFCOM.jpg" alt="700" width="700">
+</div>
+<div class="title">Figure 20. Монитор порта выдает расстояние до объекта</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/5.4.1.URFrobot.jpg" alt="700" width="700">
+</div>
+<div class="title">Figure 21. Робот и возникшее перед ним препятствие</div>
 </div>
 </li>
 </ol>
@@ -1563,7 +1689,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 11:10:46 UTC
+Last updated 2017-11-08 10:27:34 UTC
 </div>
 </div>
 </body>
