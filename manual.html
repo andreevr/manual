@@ -1571,16 +1571,53 @@ void loop()
 <div class="paragraph">
 <p>Ультразвуковой дальномер посылает через передатчик импульсный сигнал определенной частоты (в нашем случае 40 кГц)
 и слушает эхо через приемник. Отправленный сигнал встречается с объектом, отражается от него и попадает обратно в дальномер.
-По времени распространения звуковой волны оценивает расстояние до объекта по формуле</p>
+Дальномер измеряет время путешествия сигнала.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="pictures/5.2.URFanimation.gif" alt="350" width="350">
+</div>
+<div class="title">Figure 20. Принцип работы УЗ дальномера</div>
+</div>
+<div class="paragraph">
+<p>По времени распространения звуковой волны можно оценить расстояние до объекта, используя по формулу:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>s = (t<sub>и</sub> × с / 2)
-s - расстояние
-Расстояние = (Время отправленного сигнала × скорость звука (340M/S) / 2</p>
+<p>s = (t<sub>и</sub> × с / 2)</p>
 </div>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>s - расстояние до объекта</p>
+</li>
+<li>
+<p>t<sub>и</sub> - время отправленного сигнала</p>
+</li>
+<li>
+<p>с - скорость звука (343 м/с)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Почему мы наше выражение делим пополам? Все дело в том, что сигнал проходит 2 расстояния:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>От передатчика до препятствия;</p>
+</li>
+<li>
+<p>От препятствия до приемника.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Эти расстояния одинаковые (дальномер то у нас один).
+Чтобы узнать точное расстояние до объекта необходимо общий путь следования сигнала поделить пополам.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1594,6 +1631,9 @@ s - расстояние
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_Характеристики_УЗ_дальномера_hc_sr04">Характеристики УЗ дальномера HC-SR04</h3>
 <div class="paragraph">
 <p>Данное устройство имеет 4 контактных ножки:</p>
 </div>
@@ -1621,9 +1661,6 @@ s - расстояние
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_Характеристики_УЗ_дальномера_hc_sr04">Характеристики УЗ дальномера HC-SR04</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
@@ -1672,7 +1709,7 @@ s - расстояние
 <div class="content">
 <img src="pictures/5.3.URFinger.jpg" alt="700" width="700">
 </div>
-<div class="title">Figure 20. Схема подключения УЗ дальномера</div>
+<div class="title">Figure 21. Схема подключения УЗ дальномера</div>
 </div>
 </li>
 <li>
@@ -1729,13 +1766,13 @@ void loop()
 <div class="content">
 <img src="pictures/5.4.2.URFCOM.jpg" alt="700" width="700">
 </div>
-<div class="title">Figure 21. Монитор порта выдает расстояние до объекта</div>
+<div class="title">Figure 22. Монитор порта выдает расстояние до объекта</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="pictures/5.4.1.URFrobot.jpg" alt="700" width="700">
 </div>
-<div class="title">Figure 22. Робот и возникшее перед ним препятствие</div>
+<div class="title">Figure 23. Робот и возникшее перед ним препятствие</div>
 </div>
 </li>
 </ol>
@@ -1765,7 +1802,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-08 13:35:03 UTC
+Last updated 2017-11-11 09:56:58 UTC
 </div>
 </div>
 </body>
