@@ -1580,12 +1580,12 @@ void loop()
 <div class="title">Figure 20. Принцип работы УЗ дальномера</div>
 </div>
 <div class="paragraph">
-<p>По времени распространения звуковой волны можно оценить расстояние до объекта, используя по формулу:</p>
+<p>По времени распространения звуковой волны можно оценить расстояние до объекта, используя формулу:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>s = (t<sub>и</sub> × с / 2)</p>
+<p>s = (t<sub>и</sub> × с) / 2</p>
 </div>
 </div>
 </div>
@@ -1649,11 +1649,11 @@ void loop()
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Trig</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Входной контакт</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Цифровой вход</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Echo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Выходной контакт</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Цифровой выход</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gnd</p></td>
@@ -1661,6 +1661,10 @@ void loop()
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Подаем логическую единицу (высокий уровень напряжения) на цифровой вход <strong>Trig</strong>.
+После завершения измерения, на цифровой выход <strong>Echo</strong> будет подана логическая единица на время, пропорциональное расстоянию до объекта.</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
@@ -1733,16 +1737,16 @@ void setup()
 
 void loop()
 {
-  int duration;                      // Время прохождения сигнала до препятствия
-  int cm;                            // Дальность до препятствия в см
+  int t;                            // Время прохождения сигнала от приемника до передатчика
+  int s;                            // Дальность до препятствия
 
   digitalWrite(trigPin, HIGH);       // Подаем сигнал на дальномер
   delayMicroseconds(10);             // Удерживаем 10 микросекунд
   digitalWrite(trigPin, LOW);        // Отмена подачи сигнала на дальномер
-  duration = pulseIn(echoPin, HIGH); // Замеряем длину импульса
-  cm = duration / 58;                // Переводим дальность в сантиметры
+  t = pulseIn(echoPin, HIGH);        // Замеряем длину импульса
+  s = t / 58;                        // Находим расстояние до препятствия по формуле s = c*t в см
 
-  Serial.print(cm);                  // Отправляем на компьютер значение
+  Serial.print(s);                  // Отправляем на компьютер значение
   Serial.println(" cm");             // Печатаем единицы измерения в см
   delay(100);
 }</pre>
@@ -1802,7 +1806,7 @@ void loop()
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-11 09:56:58 UTC
+Last updated 2017-11-11 11:25:26 UTC
 </div>
 </div>
 </body>
